@@ -14,7 +14,11 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedVisualLabRouteImport } from './routes/_authenticated/visual-lab'
 import { Route as AuthenticatedTutorRouteImport } from './routes/_authenticated/tutor'
+import { Route as AuthenticatedRoadmapsRouteImport } from './routes/_authenticated/roadmaps'
+import { Route as AuthenticatedRevisionRouteImport } from './routes/_authenticated/revision'
 import { Route as AuthenticatedQuizRouteImport } from './routes/_authenticated/quiz'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
+import { Route as AuthenticatedMentorRouteImport } from './routes/_authenticated/mentor'
 import { Route as AuthenticatedLearnRouteImport } from './routes/_authenticated/learn'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 
@@ -42,9 +46,29 @@ const AuthenticatedTutorRoute = AuthenticatedTutorRouteImport.update({
   path: '/tutor',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedRoadmapsRoute = AuthenticatedRoadmapsRouteImport.update({
+  id: '/roadmaps',
+  path: '/roadmaps',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedRevisionRoute = AuthenticatedRevisionRouteImport.update({
+  id: '/revision',
+  path: '/revision',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedQuizRoute = AuthenticatedQuizRouteImport.update({
   id: '/quiz',
   path: '/quiz',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedMentorRoute = AuthenticatedMentorRouteImport.update({
+  id: '/mentor',
+  path: '/mentor',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedLearnRoute = AuthenticatedLearnRouteImport.update({
@@ -63,7 +87,11 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/learn': typeof AuthenticatedLearnRoute
+  '/mentor': typeof AuthenticatedMentorRoute
+  '/profile': typeof AuthenticatedProfileRoute
   '/quiz': typeof AuthenticatedQuizRoute
+  '/revision': typeof AuthenticatedRevisionRoute
+  '/roadmaps': typeof AuthenticatedRoadmapsRoute
   '/tutor': typeof AuthenticatedTutorRoute
   '/visual-lab': typeof AuthenticatedVisualLabRoute
 }
@@ -72,7 +100,11 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/learn': typeof AuthenticatedLearnRoute
+  '/mentor': typeof AuthenticatedMentorRoute
+  '/profile': typeof AuthenticatedProfileRoute
   '/quiz': typeof AuthenticatedQuizRoute
+  '/revision': typeof AuthenticatedRevisionRoute
+  '/roadmaps': typeof AuthenticatedRoadmapsRoute
   '/tutor': typeof AuthenticatedTutorRoute
   '/visual-lab': typeof AuthenticatedVisualLabRoute
 }
@@ -83,7 +115,11 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/learn': typeof AuthenticatedLearnRoute
+  '/_authenticated/mentor': typeof AuthenticatedMentorRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/_authenticated/quiz': typeof AuthenticatedQuizRoute
+  '/_authenticated/revision': typeof AuthenticatedRevisionRoute
+  '/_authenticated/roadmaps': typeof AuthenticatedRoadmapsRoute
   '/_authenticated/tutor': typeof AuthenticatedTutorRoute
   '/_authenticated/visual-lab': typeof AuthenticatedVisualLabRoute
 }
@@ -94,7 +130,11 @@ export interface FileRouteTypes {
     | '/auth'
     | '/dashboard'
     | '/learn'
+    | '/mentor'
+    | '/profile'
     | '/quiz'
+    | '/revision'
+    | '/roadmaps'
     | '/tutor'
     | '/visual-lab'
   fileRoutesByTo: FileRoutesByTo
@@ -103,7 +143,11 @@ export interface FileRouteTypes {
     | '/auth'
     | '/dashboard'
     | '/learn'
+    | '/mentor'
+    | '/profile'
     | '/quiz'
+    | '/revision'
+    | '/roadmaps'
     | '/tutor'
     | '/visual-lab'
   id:
@@ -113,7 +157,11 @@ export interface FileRouteTypes {
     | '/auth'
     | '/_authenticated/dashboard'
     | '/_authenticated/learn'
+    | '/_authenticated/mentor'
+    | '/_authenticated/profile'
     | '/_authenticated/quiz'
+    | '/_authenticated/revision'
+    | '/_authenticated/roadmaps'
     | '/_authenticated/tutor'
     | '/_authenticated/visual-lab'
   fileRoutesById: FileRoutesById
@@ -161,11 +209,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedTutorRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/roadmaps': {
+      id: '/_authenticated/roadmaps'
+      path: '/roadmaps'
+      fullPath: '/roadmaps'
+      preLoaderRoute: typeof AuthenticatedRoadmapsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/revision': {
+      id: '/_authenticated/revision'
+      path: '/revision'
+      fullPath: '/revision'
+      preLoaderRoute: typeof AuthenticatedRevisionRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/quiz': {
       id: '/_authenticated/quiz'
       path: '/quiz'
       fullPath: '/quiz'
       preLoaderRoute: typeof AuthenticatedQuizRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/mentor': {
+      id: '/_authenticated/mentor'
+      path: '/mentor'
+      fullPath: '/mentor'
+      preLoaderRoute: typeof AuthenticatedMentorRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/learn': {
@@ -188,7 +264,11 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedLearnRoute: typeof AuthenticatedLearnRoute
+  AuthenticatedMentorRoute: typeof AuthenticatedMentorRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
   AuthenticatedQuizRoute: typeof AuthenticatedQuizRoute
+  AuthenticatedRevisionRoute: typeof AuthenticatedRevisionRoute
+  AuthenticatedRoadmapsRoute: typeof AuthenticatedRoadmapsRoute
   AuthenticatedTutorRoute: typeof AuthenticatedTutorRoute
   AuthenticatedVisualLabRoute: typeof AuthenticatedVisualLabRoute
 }
@@ -196,7 +276,11 @@ interface AuthenticatedRouteRouteChildren {
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedLearnRoute: AuthenticatedLearnRoute,
+  AuthenticatedMentorRoute: AuthenticatedMentorRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
   AuthenticatedQuizRoute: AuthenticatedQuizRoute,
+  AuthenticatedRevisionRoute: AuthenticatedRevisionRoute,
+  AuthenticatedRoadmapsRoute: AuthenticatedRoadmapsRoute,
   AuthenticatedTutorRoute: AuthenticatedTutorRoute,
   AuthenticatedVisualLabRoute: AuthenticatedVisualLabRoute,
 }
