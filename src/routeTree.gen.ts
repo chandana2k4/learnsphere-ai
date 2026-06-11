@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedVisualLabRouteImport } from './routes/_authenticated/visual-lab'
 import { Route as AuthenticatedTutorRouteImport } from './routes/_authenticated/tutor'
 import { Route as AuthenticatedQuizRouteImport } from './routes/_authenticated/quiz'
 import { Route as AuthenticatedLearnRouteImport } from './routes/_authenticated/learn'
@@ -30,6 +31,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedVisualLabRoute = AuthenticatedVisualLabRouteImport.update({
+  id: '/visual-lab',
+  path: '/visual-lab',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedTutorRoute = AuthenticatedTutorRouteImport.update({
   id: '/tutor',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/learn': typeof AuthenticatedLearnRoute
   '/quiz': typeof AuthenticatedQuizRoute
   '/tutor': typeof AuthenticatedTutorRoute
+  '/visual-lab': typeof AuthenticatedVisualLabRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/learn': typeof AuthenticatedLearnRoute
   '/quiz': typeof AuthenticatedQuizRoute
   '/tutor': typeof AuthenticatedTutorRoute
+  '/visual-lab': typeof AuthenticatedVisualLabRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -77,12 +85,27 @@ export interface FileRoutesById {
   '/_authenticated/learn': typeof AuthenticatedLearnRoute
   '/_authenticated/quiz': typeof AuthenticatedQuizRoute
   '/_authenticated/tutor': typeof AuthenticatedTutorRoute
+  '/_authenticated/visual-lab': typeof AuthenticatedVisualLabRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/dashboard' | '/learn' | '/quiz' | '/tutor'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/learn'
+    | '/quiz'
+    | '/tutor'
+    | '/visual-lab'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/dashboard' | '/learn' | '/quiz' | '/tutor'
+  to:
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/learn'
+    | '/quiz'
+    | '/tutor'
+    | '/visual-lab'
   id:
     | '__root__'
     | '/'
@@ -92,6 +115,7 @@ export interface FileRouteTypes {
     | '/_authenticated/learn'
     | '/_authenticated/quiz'
     | '/_authenticated/tutor'
+    | '/_authenticated/visual-lab'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -122,6 +146,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/visual-lab': {
+      id: '/_authenticated/visual-lab'
+      path: '/visual-lab'
+      fullPath: '/visual-lab'
+      preLoaderRoute: typeof AuthenticatedVisualLabRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/tutor': {
       id: '/_authenticated/tutor'
@@ -159,6 +190,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedLearnRoute: typeof AuthenticatedLearnRoute
   AuthenticatedQuizRoute: typeof AuthenticatedQuizRoute
   AuthenticatedTutorRoute: typeof AuthenticatedTutorRoute
+  AuthenticatedVisualLabRoute: typeof AuthenticatedVisualLabRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -166,6 +198,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedLearnRoute: AuthenticatedLearnRoute,
   AuthenticatedQuizRoute: AuthenticatedQuizRoute,
   AuthenticatedTutorRoute: AuthenticatedTutorRoute,
+  AuthenticatedVisualLabRoute: AuthenticatedVisualLabRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
