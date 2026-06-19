@@ -188,6 +188,10 @@ bun run dev
 
 The app will be available at `http://localhost:5173`.
 
+### Live Link
+
+https://lovable.dev/preview/fJMyIeBb1qWtINqa5ztkbOxSe2OzfL0V
+
 ### Build for Production
 
 ```bash
