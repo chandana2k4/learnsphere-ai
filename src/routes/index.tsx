@@ -80,6 +80,7 @@ function Landing() {
             <div className="mt-9 flex flex-wrap justify-center gap-3">
               <Link
                 to="/auth"
+                search={{ redirect: undefined }}
                 className="group inline-flex items-center gap-2 rounded-xl brand-gradient px-6 py-3 text-sm font-medium text-primary-foreground glow-shadow transition-transform hover:scale-[1.02]"
               >
                 Get Started <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -183,6 +184,7 @@ function Landing() {
           </p>
           <Link
             to="/auth"
+            search={{ redirect: undefined }}
             className="mt-7 inline-flex items-center gap-2 rounded-xl brand-gradient px-7 py-3 text-sm font-medium text-primary-foreground glow-shadow"
           >
             Create your free account <ArrowRight className="h-4 w-4" />
