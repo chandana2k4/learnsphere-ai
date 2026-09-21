@@ -75,8 +75,8 @@ export function Navbar() {
             </button>
           ) : (
             <>
-              <Link to="/auth" className="hidden rounded-lg px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground md:inline-flex">Sign in</Link>
-              <Link to="/auth" className="rounded-lg brand-gradient px-4 py-2 text-sm font-medium text-primary-foreground glow-shadow">Get started</Link>
+              <Link to="/auth" search={{ redirect: undefined }} className="hidden rounded-lg px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground md:inline-flex">Sign in</Link>
+              <Link to="/auth" search={{ redirect: undefined }} className="rounded-lg brand-gradient px-4 py-2 text-sm font-medium text-primary-foreground glow-shadow">Get started</Link>
             </>
           )}
           {authed && (
